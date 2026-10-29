@@ -6,52 +6,94 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 
-class LoginVC: UIViewController {
+class LoginVC: UIViewController, UITextFieldDelegate, rqDelegate {
 
-    let json = """
-    {
-        "user": [
-            {
-                "nwid": 1,
-                "nwtitle": "Mega Procesión de Catrinas 2026 en CDMX",
-                "nwdesc": "Entre catrinas, rostros pintados y el orgullo por las tradiciones mexicanas, la Ciudad de México se prepara para vivir una de las celebraciones más emblemáticas del Día de Muertos. Lo que comenzó el 26 de octubre de 2014 como una iniciativa de Jessy Esquivias, creadora y productora del proyecto, con apenas 300 participantes y el apoyo de un pequeño grupo de maquillistas, se convirtió en un movimiento cultural que se celebra año con año.\\n\\nEste domingo 25 de octubre, la Mega Procesión de Catrinas 2026 volverá a llenar de color y tradición algunas de las principales avenidas de la capital; una fiesta donde la muerte se viste de arte y la cultura mexicana cobra vida",
-                "nwimage": "https://www.eluniversal.com.mx/resizer/v2/NDDTJK4JEZE5LMOM2A2DWGWA2A.jpeg?auth=a05afd7e80bb50340a6d98cd8f7d65659bcffa6c0d656d6fc1fb84707e135973",
-                "nwurl": "https://www.eluniversal.com.mx/metropoli/mega-procesion-de-catrinas-2026-en-cdmx-sigue-en-vivo-el-recorrido-y-consulta-las-alternativas-viales/",
-                "nwdate": "2026-10-26T06:00:00.000Z",
-                "nwstatus": 1,
-                "nwupdate": "2026-10-26T06:58:14.000Z"
-            }
-        ],
-        "valid": 1,
-        "message": "Ok, todo bien"
+
+    @IBOutlet weak var txtUsuario: UITextField!
+    @IBOutlet weak var txtPsw: UITextField!
+
+
+
+    //MARK: Actions
+
+    @IBAction func mostrarPsw(_ sender: Any) {
+        txtPsw.isSecureTextEntry.toggle()
     }
-    """.data(using: .utf8)!
     
-    struct RespuestaNoticias : Codable {
-        let user: [Noticia]?
-        let valid: Int
-        let message: String?
+    @IBAction func goSignUp(_ sender: Any) {
+        performSegue(Segue.signup, sender: nil)
+        //self.performSegue(withIdentifier: "sLoginSignup", sender: nil)
     }
+
+    @IBAction func goSignIn(_ sender: Any) {
+        if txtUsuario.text!.isEmpty || txtPsw.text!.isEmpty {
+            SVProgressHUD.showError(withStatus: "Debe ingresar su usuario y contraseña")
+            return
+        }
+        if !txtUsuario.text!.esEmail {
+            SVProgressHUD.showError(withStatus: "Debe ingresar un email válido")
+            return
+        }
+        SVProgressHUD.show()
+        let query = "100|\(txtUsuario.text ?? "")|\(txtPsw.text ?? "")"
+        let rq = RemoteQueries.init()
+        rq.remoteQuery(query: query, cons: "login", delegate: self)
+    }
+
+    @IBAction func goRecordar(_ sender: Any) {
+        performSegue(Segue.recordar, sender: nil)
+    }
+
+
+
+
+    //MARK: Delegates
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == txtUsuario {
+            txtPsw.becomeFirstResponder()
+        }else{
+            txtPsw.resignFirstResponder()
+        }
+        return true
+    }
+
+    func querySuccess(result: RespuestaServicios, cons: String) {
+        print(result)
+        if result.valid == 1, let usuario = result.user?.first{
+            Sesion.shared.user = usuario
+        }
+        SVProgressHUD.dismiss()
+        performSegue(Segue.menu, sender: nil)
+    }
+
+    func queryError(error: String) {
+    }
+
+
+    //MARK: Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        /*let not1 = Noticia(id: 1, titulo: "Prueba", descripcion: "descripcion de mi noticia de prueba", imagen: nil, url: nil, fecha: "2026-10-26")
 
-        var not2 = not1
-        not2.marcarLeida()*/
+        txtUsuario.attributedPlaceholder = NSAttributedString(string: "Usuario", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        txtPsw.attributedPlaceholder = NSAttributedString(string: "Contraseña", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
 
-        do{
-            let respuesta = try JSONDecoder().decode(RespuestaNoticias.self, from: json)
-            for n in respuesta.user ?? [] {
-                print(n.id, n.titulo)
-            }
-        }catch let error{
-            print("Error al decodificar JSON: \(error)")
+        if Sesion.shared.haySesion {
+            performSegue(Segue.menu, sender: nil)
         }
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
 
     }
-   
+
 }

@@ -24,3 +24,10 @@ struct Noticia: Codable {
         case imagen = "nwimage", url = "nwurl", fecha = "nwdate"
     }
 }
+
+nonisolated struct RespuestaServicios : Codable, Sendable {
+    let user: [User]?
+    let news: [Noticia]?
+    let valid: Int
+    let message: String?
+}

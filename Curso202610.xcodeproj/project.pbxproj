@@ -6,6 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		05BC2D213091061F0073A15F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 05BC2D203091061F0073A15F /* Alamofire */; };
+		05BC2D26309106610073A15F /* SVProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 05BC2D25309106610073A15F /* SVProgressHUD */; };
+		05BC2D29309106760073A15F /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 05BC2D28309106760073A15F /* SDWebImage */; };
+		05BC2D2B309106760073A15F /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 05BC2D2A309106760073A15F /* SDWebImageMapKit */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		058263CE308FC87A00B72E2E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -65,6 +72,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05BC2D26309106610073A15F /* SVProgressHUD in Frameworks */,
+				05BC2D2B309106760073A15F /* SDWebImageMapKit in Frameworks */,
+				05BC2D213091061F0073A15F /* Alamofire in Frameworks */,
+				05BC2D29309106760073A15F /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +136,10 @@
 			);
 			name = Curso202610;
 			packageProductDependencies = (
+				05BC2D203091061F0073A15F /* Alamofire */,
+				05BC2D25309106610073A15F /* SVProgressHUD */,
+				05BC2D28309106760073A15F /* SDWebImage */,
+				05BC2D2A309106760073A15F /* SDWebImageMapKit */,
 			);
 			productName = Curso202610;
 			productReference = 058263B7308FC87800B72E2E /* Curso202610.app */;
@@ -208,6 +223,11 @@
 			);
 			mainGroup = 058263AE308FC87800B72E2E;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				05BC2D1F3091061F0073A15F /* XCRemoteSwiftPackageReference "Alamofire" */,
+				05BC2D24309106610073A15F /* XCRemoteSwiftPackageReference "SVProgressHUD" */,
+				05BC2D27309106760073A15F /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 058263B8308FC87800B72E2E /* Products */;
 			projectDirPath = "";
@@ -603,6 +623,56 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		05BC2D1F3091061F0073A15F /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.12.2;
+			};
+		};
+		05BC2D24309106610073A15F /* XCRemoteSwiftPackageReference "SVProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SVProgressHUD/SVProgressHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.1;
+			};
+		};
+		05BC2D27309106760073A15F /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.21.7;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		05BC2D203091061F0073A15F /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 05BC2D1F3091061F0073A15F /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		05BC2D25309106610073A15F /* SVProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 05BC2D24309106610073A15F /* XCRemoteSwiftPackageReference "SVProgressHUD" */;
+			productName = SVProgressHUD;
+		};
+		05BC2D28309106760073A15F /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 05BC2D27309106760073A15F /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		05BC2D2A309106760073A15F /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 05BC2D27309106760073A15F /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 058263AF308FC87800B72E2E /* Project object */;
 }

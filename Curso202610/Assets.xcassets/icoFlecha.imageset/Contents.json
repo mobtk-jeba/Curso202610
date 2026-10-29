@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "iconFlecha.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
