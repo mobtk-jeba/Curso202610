@@ -9,7 +9,7 @@ enum Segue:String {
     case signup = "sLoginSignup", recordar = "sLoginRecordar", menu = "sLoginMenu"
     case noticias = "sMenuNoticias", checkin = "sMenuCheckin"
     case notificaciones = "sMenuNotificaciones", perfil = "sMenuPerfil", tareas = "sMenuTareas"
-    case detalleNoticia = "sNoticiasDetalle"
+    case detalleNoticia = "sNoticiasDetalle", detalleTarea = "sTareasDetalle"
 }
 
 enum SeccionMenu: Int {

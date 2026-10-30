@@ -28,6 +28,7 @@ struct Noticia: Codable {
 nonisolated struct RespuestaServicios : Codable, Sendable {
     let user: [User]?
     let news: [Noticia]?
+    let products: [Producto]?
     let valid: Int
     let message: String?
 }

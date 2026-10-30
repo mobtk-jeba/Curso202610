@@ -38,6 +38,7 @@ class RemoteQueries {//100|usr|psw
                 }
             case .failure(let error):
                 SVProgressHUD.showError(withStatus: "Error: \(error.localizedDescription)")
+                print(error)
             }
         }
 

@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import SVProgressHUD
 
 class NoticiaDetalle: UIViewController {
     @IBOutlet weak var imagen: UIImageView!
@@ -28,9 +29,17 @@ class NoticiaDetalle: UIViewController {
     }
 
     @IBAction func Share(_ sender: Any) {
+        let activity = UIActivityViewController(activityItems: [noticia?.url ?? ""], applicationActivities: [])
+        activity.popoverPresentationController?.sourceView = self.view
+        present(activity, animated: true)
     }
     
     @IBAction func View(_ sender: Any) {
+        guard let url = URL(string: noticia?.url ?? "") else {
+            SVProgressHUD.showError(withStatus: "Error al cargar la URL")
+            return
+        }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
 

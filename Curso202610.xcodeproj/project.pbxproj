@@ -314,6 +314,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Curso202610/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Curso iOS";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Accederemos a tu cámara para seleccionar la foto de perfil";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Usaremos tu ubiación para mostrarla en el mapa";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Accederemos a tu libreria para seleccionar la foto de perfil";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -352,6 +355,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Curso202610/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Curso iOS";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Accederemos a tu cámara para seleccionar la foto de perfil";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Usaremos tu ubiación para mostrarla en el mapa";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Accederemos a tu libreria para seleccionar la foto de perfil";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
